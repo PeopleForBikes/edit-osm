@@ -19,22 +19,10 @@ Outputs: Modified OSM file with numbers reordered by magnitude
 from lxml import etree
 import os
 
-# default path
+# default file path
 fpath = os.getcwd()
 
-#  read osm file
-tree = etree.parse(fpath + 'helvetia_mod.osm')
-
-# identify nodes with negative id
-ways = tree.xpath('.//way[starts-with(@id, "-")]')
-
-# identify ways with negative id
-nodes = tree.xpath('.//node[starts-with(@id, "-")]')
-
-# Set root, which is OSM tag
-root = tree.getroot()
-
-# function to resort nodes or ways
+# function to re-sort nodes or ways
 def reorder(osm_object, root):
     
     object_len = len(osm_object)
@@ -42,12 +30,36 @@ def reorder(osm_object, root):
     if object_len <= 0:
         return
     while object_len > 0:
-        root.insert(root.index(osm_object[0], osm_object[object_len-1]))    
+        root.insert(root.index(osm_object[0]), osm_object[object_len-1])    
         object_len-=1
     
-# run reorder function for nodes and ways
-reorder(nodes, root)
-reorder(ways, root)
+    return 
+    
+# parent function to ingest file, identify components to sort, and return edited file
+def order_osm(file_name):
+    
+    #  read osm file
+    tree = etree.parse(fpath)
+
+    # identify nodes with negative id
+    ways = tree.xpath('.//way[starts-with(@id, "-")]')
+
+    # identify ways with negative id
+    nodes = tree.xpath('.//node[starts-with(@id, "-")]')
+    
+    if len(nodes)+len(ways) <= 0:
+        return "No negative values to sort."
+    
+    # Set root, which is OSM tag
+    root = tree.getroot()
+    
+    # run reorder function for nodes and ways
+    reorder(nodes, root)
+    reorder(ways, root)
+
+    return tree
+
+revised_xml = order_osm(fpath)
 
 # Write to file
-tree.write(fpath + '/revised_xml.osm', pretty_print=True, xml_declaration=True, encoding="utf-8")
+revised_xml.write(fpath + '/revised_xml.osm', pretty_print=True, xml_declaration=True, encoding="utf-8")
