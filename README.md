@@ -13,6 +13,6 @@ Note: For a large area like an entire city this process may be difficult without
 
 Once you've created the file with hypothetical data, run it through the BNA to obtain scenario planning results. 
 
-Keep in mind that changes to the overall scores will depend on the extent and significance of proposed infrastructure changes and the size of the measured region. For instance, adding a protected bike lane on a dangerous street that connects a residential neighborhood to a business district could produce significant score improvements at the neighborhood scale. However, that single improvement might not affect the overall BNA score on the city scale, because it is a small part of a big region.
+Keep in mind that changes to the overall scores will depend on the extent and significance of proposed infrastructure changes and the extent of the measured region. For instance, adding a protected bike lane on a dangerous street that connects a residential neighborhood to a business district could produce significant score improvements at the neighborhood scale. However, that single improvement might not affect the overall BNA score on the city scale, because it is a small part of a big region.
 
-Also keep in mind that in some cases intersections or crossings of busy streets are major barriers to connectivity. Road improvement may not make a significant difference unless they include safe intersection treatments.
+Also keep in mind that in some cases intersections or crossings of busy streets are major barriers to connectivity. Road improvements may not make a significant difference unless they include safe intersection treatments.
